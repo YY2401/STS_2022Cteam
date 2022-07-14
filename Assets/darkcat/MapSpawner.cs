@@ -156,6 +156,10 @@ public class MapSpawner : MonoBehaviour
             }
         }        
     }
+    public BlockType GetType(Vector2 pos)
+    {
+        return MapData.ThisColumnData[(int)pos.x].ThisBlockData[(int)pos.y];
+    }
     public void MapListToScene()
     {
         for (int i = 1; i < 8; i++)
