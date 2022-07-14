@@ -1,25 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
+using UnityEngine.ResourceManagement.ResourceLocations;
 
 public class MapSpawner : MonoBehaviour
 {
     public NowMapData MapData;
     public MapSO MapPreMade;
-    public List<Vector2> TrapPos = new List<Vector2>();
-    public List<Vector2> ColorChanger = new List<Vector2>();
-    public List<Vector2> EndPos = new List<Vector2>();
+    private List<Vector2> TrapPos = new List<Vector2>();
+    private List<Vector2> ColorChanger = new List<Vector2>();
+    private List<Vector2> EndPos = new List<Vector2>();
+    public GameObject[] EndBlock;
+    public IList<GameObject> m_Blocks;
+    public AssetLabelReference m_BlocksLables;
     void Start()
     {
         SpawnMap(1);
+        Addressables.LoadAssetsAsync<GameObject>(m_BlocksLables, null).Completed += OnResourcesRetrived;
         
-        MapListToScene();
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+    public void OnResourcesRetrived(AsyncOperationHandle<IList<GameObject>>obj)
+    {
+        m_Blocks = obj.Result;
+        MapListToScene();
     }
     public void SpawnMap(int Round)
     {
@@ -160,17 +171,49 @@ public class MapSpawner : MonoBehaviour
     {
         return MapData.ThisColumnData[(int)pos.x].ThisBlockData[(int)pos.y];
     }
+    public GameObject FindAsset(string BlockName)
+    {
+        foreach (var item in m_Blocks)
+        {
+            if (item.name == BlockName)
+            {
+                return item;
+            }
+        }
+        return null;
+    }
     public void MapListToScene()
     {
+        int Pattern = Random.Range(0, 2);
+        bool BoxSpawn = false;
         for (int i = 1; i < 8; i++)
         {
             for (int j = 1; j < 8; j++)
             {
-                //switch(MapData.NowMap[i][j])
-                //{
-                //    case BlockType.Wall:
-                //}
-                //Debug.Log(i.ToString() + j.ToString() + MapData.ThisColumnData[i].ThisBlockData[j].ToString());
+                switch (MapData.ThisColumnData[i].ThisBlockData[j])
+                {
+                    case BlockType.FireTrap:
+                        
+                        break;
+                    case BlockType.ThunderTrap:
+                        Instantiate(FindAsset("LightingTrap"), new Vector3(-2 * (i - 1), -2, -2 * (j - 1)), Quaternion.identity);
+                        break;
+                    case BlockType.MistTrap:
+                        break;
+                    case BlockType.ColorChanger:
+                        break;
+                    case BlockType.End:
+                        if (Pattern == 0)
+                        {
+                            
+                        }
+                        else
+                        {
+
+                        }
+                        break;
+                }
+                Debug.Log(i.ToString() + j.ToString() + MapData.ThisColumnData[i].ThisBlockData[j].ToString());
             }
         }
     }
