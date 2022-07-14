@@ -16,6 +16,7 @@ public enum BlockType
     ThunderTrap,
     MistTrap,
     ColorChanger,
+    End,
 }
 public abstract class Block : ScriptableObject
 {

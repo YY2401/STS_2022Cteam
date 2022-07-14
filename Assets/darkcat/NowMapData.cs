@@ -5,6 +5,10 @@ using UnityEngine;
 [System.Serializable]
 public class NowMapData
 {
-    public List<BlockType> RandomColumn = new List<BlockType>();
-    public List<List<BlockType>> NowMap = new List<List<BlockType>>();
+    public MapColunm[] ThisColumnData = new MapColunm[9];
+}
+[System.Serializable]
+public class MapColunm
+{
+    public BlockType[] ThisBlockData = new BlockType[9];
 }
