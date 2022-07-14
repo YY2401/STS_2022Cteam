@@ -1,0 +1,13 @@
+﻿# Default ignored files
+/shelf/
+/workspace.xml
+# Rider ignored files
+/projectSettingsUpdater.xml
+/contentModel.xml
+/modules.xml
+/.idea.STS_2022Cteam.iml
+# Datasource local storage ignored files
+/../../../../../../:\Unity-STS-C\STS_2022Cteam\.idea\.idea.STS_2022Cteam\.idea/dataSources/
+/dataSources.local.xml
+# Editor-based HTTP Client requests
+/httpRequests/
