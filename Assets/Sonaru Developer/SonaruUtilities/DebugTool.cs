@@ -6,7 +6,7 @@ namespace SonaruUtilities
 {
     public class DebugTextMesh
     {
-        public static TextMesh CreatWorldText(string text, Transform parent=null, Vector3 localPosition=default(Vector3), int fontSize=40, Color? color=null, TextAnchor textAnchor=TextAnchor.UpperLeft, TextAlignment textAlignment=TextAlignment.Left, int sortingOrder=5000)
+        public static TextMesh CreatWorldText(string text, Transform parent=null, Vector3 localPosition=default(Vector3), int fontSize=40, Color color=default(Color), TextAnchor textAnchor=TextAnchor.UpperLeft, TextAlignment textAlignment=TextAlignment.Left, int sortingOrder=5000)
         {
             GameObject gameObject = new GameObject("World_Text", typeof(TextMesh));
             Transform transform = gameObject.transform;
@@ -17,7 +17,7 @@ namespace SonaruUtilities
             textMesh.alignment = textAlignment;
             textMesh.text = text;
             textMesh.fontSize = fontSize;
-            if(color==null) textMesh.color = Color.white;
+            textMesh.color = color;
             textMesh.GetComponent<MeshRenderer>().sortingOrder = sortingOrder;
             return textMesh;
         }
