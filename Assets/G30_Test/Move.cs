@@ -1,22 +1,33 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Controls;
 public class Move : MonoBehaviour { 
     public int speed = 300;
     bool isMoving = false;
-
+    Gamepad gamepad;
     void Update() {
         if (isMoving) {
             return;
         }
 
-        if (Input.GetKey(KeyCode.D)) {
-            StartCoroutine(Roll(Vector3.right));
-        } else if (Input.GetKey(KeyCode.A)) {
+        else if(Gamepad.current.dpad.x.ReadValue() == -1 && Gamepad.current.dpad.IsPressed())
+        {
+            Debug.Log("LeftBtn");
             StartCoroutine(Roll(Vector3.left));
-        } else if (Input.GetKey(KeyCode.W)) {
+        }else if(Gamepad.current.dpad.y.ReadValue() == 1 && Gamepad.current.dpad.IsPressed())
+        {
+            Debug.Log("UpBtn");
             StartCoroutine(Roll(Vector3.forward));
-        } else if (Input.GetKey(KeyCode.S)) {
+        }
+        else if(Gamepad.current.dpad.x.ReadValue() == 1 && Gamepad.current.dpad.IsPressed())
+        {
+            Debug.Log("RightBtn");
+             StartCoroutine(Roll(Vector3.right));
+        }
+        else if(Gamepad.current.dpad.y.ReadValue() == -1 && Gamepad.current.dpad.IsPressed())
+        {
+            Debug.Log("DownBtn");
             StartCoroutine(Roll(Vector3.back));
         }
     }
@@ -25,7 +36,7 @@ public class Move : MonoBehaviour {
         isMoving = true;
 
         float remainingAngle = 90;
-        Vector3 rotationCenter = transform.position + direction / 2 + Vector3.down / 2;
+        Vector3 rotationCenter = transform.position + direction  + Vector3.down ;
         Vector3 rotationAxis = Vector3.Cross(Vector3.up, direction);
 
         while (remainingAngle > 0) {
