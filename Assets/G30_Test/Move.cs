@@ -11,21 +11,21 @@ public class Move : MonoBehaviour {
             return;
         }
 
-        else if(Gamepad.current.dpad.x.ReadValue() == -1 && Gamepad.current.dpad.IsPressed())
+        else if(Gamepad.current.dpad.x.ReadValue() == 1 && Gamepad.current.dpad.IsPressed())
         {
             Debug.Log("LeftBtn");
             StartCoroutine(Roll(Vector3.left));
-        }else if(Gamepad.current.dpad.y.ReadValue() == 1 && Gamepad.current.dpad.IsPressed())
+        }else if(Gamepad.current.dpad.y.ReadValue() == -1 && Gamepad.current.dpad.IsPressed())
         {
             Debug.Log("UpBtn");
             StartCoroutine(Roll(Vector3.forward));
         }
-        else if(Gamepad.current.dpad.x.ReadValue() == 1 && Gamepad.current.dpad.IsPressed())
+        else if(Gamepad.current.dpad.x.ReadValue() == -1 && Gamepad.current.dpad.IsPressed())
         {
             Debug.Log("RightBtn");
              StartCoroutine(Roll(Vector3.right));
         }
-        else if(Gamepad.current.dpad.y.ReadValue() == -1 && Gamepad.current.dpad.IsPressed())
+        else if(Gamepad.current.dpad.y.ReadValue() == 1 && Gamepad.current.dpad.IsPressed())
         {
             Debug.Log("DownBtn");
             StartCoroutine(Roll(Vector3.back));
