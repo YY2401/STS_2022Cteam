@@ -1,0 +1,34 @@
+{
+    "name": "Controller",
+    "maps": [
+        {
+            "name": "Charactercontroll_Inpt",
+            "id": "b09e4dc1-bfdb-45fe-8219-1fb74cedb727",
+            "actions": [
+                {
+                    "name": "Movement1",
+                    "type": "Button",
+                    "id": "c1066698-eb04-4a38-9c97-fbee22f2579f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "e63fad19-d2ae-4d26-acca-5941904308cc",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
