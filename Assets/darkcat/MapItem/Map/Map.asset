@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Map
   m_EditorClassIdentifier: 
   ThisMap:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: a54a24f92565c64469e1a1ca869c00a1, type: 2}
+  - {fileID: 11400000, guid: 0e766eda2dbe26d4a9f600cb1ec093ce, type: 2}
+  - {fileID: 11400000, guid: 371170b528d89ca428486dca0b218718, type: 2}
+  - {fileID: 11400000, guid: 0c65caad603b98443a8b7d11ae61ae65, type: 2}
+  - {fileID: 11400000, guid: c3edc53582f628347846553d4ff790b1, type: 2}
+  - {fileID: 11400000, guid: c890521e201522a4781186c0e2e9ae54, type: 2}
+  - {fileID: 11400000, guid: de30168c8e4e5914c852a06485600e08, type: 2}
+  - {fileID: 11400000, guid: ca25f595b0777f446b31e26fb18afa47, type: 2}
+  - {fileID: 11400000, guid: a25e07da11a049a4cabe82ec128ec259, type: 2}

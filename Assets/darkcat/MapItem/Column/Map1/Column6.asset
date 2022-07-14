@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e973fae1be44a9942a0b30432da8e3cd, type: 3}
-  m_Name: Column4
+  m_Name: Column6
   m_EditorClassIdentifier: 
   ThisColumn:
   - {fileID: 11400000, guid: 9d04c337c9a339e45bab8c80a080ea41, type: 2}
+  - {fileID: 11400000, guid: 517b8d4d587fc1443bac6ee076c9eb24, type: 2}
   - {fileID: 11400000, guid: 533c4ac14ccdbc749b510520fa5d217e, type: 2}
+  - {fileID: 11400000, guid: c1801127debfd864a90ebb2e511a9ee3, type: 2}
   - {fileID: 11400000, guid: a1ad384ecf11f084b9a82cc3d84632f2, type: 2}
+  - {fileID: 11400000, guid: c1801127debfd864a90ebb2e511a9ee3, type: 2}
   - {fileID: 11400000, guid: 533c4ac14ccdbc749b510520fa5d217e, type: 2}
-  - {fileID: 11400000, guid: 533c4ac14ccdbc749b510520fa5d217e, type: 2}
-  - {fileID: 11400000, guid: 533c4ac14ccdbc749b510520fa5d217e, type: 2}
-  - {fileID: 11400000, guid: a1ad384ecf11f084b9a82cc3d84632f2, type: 2}
-  - {fileID: 11400000, guid: 533c4ac14ccdbc749b510520fa5d217e, type: 2}
+  - {fileID: 11400000, guid: a9f41d5e47b41dc49911ef01b4ad6dc4, type: 2}
   - {fileID: 11400000, guid: 9d04c337c9a339e45bab8c80a080ea41, type: 2}

@@ -12,7 +12,10 @@ public enum BlockType
     SingleEndSpawner,
     DoubleEndSpawner,
     Road,
-
+    FireTrap,
+    ThunderTrap,
+    MistTrap,
+    ColorChanger,
 }
 public abstract class Block : ScriptableObject
 {
