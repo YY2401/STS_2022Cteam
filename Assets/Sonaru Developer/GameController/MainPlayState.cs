@@ -27,8 +27,9 @@ public class MainPlayState : IState
 
     public void OnStateStay()
     {
-        //if(debugText) debugText.text = gameTimer.Remain.ToString();
+        // if Time over -> game over scene
         
+        // else if Player1 & Player2 arrive finish point -> main play scene
         if(gameTimer.IsFinish) Controller.ChangeState(StateEnum.MainPlay);
     }
 
