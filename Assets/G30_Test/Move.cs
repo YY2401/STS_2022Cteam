@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
 using System.Linq;
 using UnityEngine.UI;
+using UnityEngine.Events;
 public class Move : MonoBehaviour {
     public GameObject ThisPlayerOBJ;
     public MapSpawner mapspawn;
@@ -21,7 +22,6 @@ public class Move : MonoBehaviour {
     public bool IsToEnd = false;
     public GamePadRes Controller;private Move Another;
     public GameController GM;
-
     void Start()
     {
         GM = GameObject.Find("GameController").GetComponent<GameController>();
@@ -145,7 +145,10 @@ public class Move : MonoBehaviour {
             ThisColor = NowColor.Red;
         }
     }
-
+    public void OnFireTrigger()
+    {
+        
+    }
 
     void GridPosition()
     {
