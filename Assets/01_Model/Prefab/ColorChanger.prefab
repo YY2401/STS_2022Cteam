@@ -91,7 +91,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1445722359103034554}
   m_Layer: 0
-  m_Name: ColorChange_1_mod
+  m_Name: ColorChanger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
