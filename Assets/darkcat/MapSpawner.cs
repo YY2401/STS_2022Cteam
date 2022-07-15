@@ -21,29 +21,27 @@ public class MapSpawner : MonoBehaviour
     void Start()
     {
         LoadBlockAssetData();
-
-
     }
 
     // Update is called once per frame
     void Update()
     {
-        foreach (var item in Gamepad.all)
-        {
-            if (item.buttonEast.wasPressedThisFrame)
-            {
-                DestroyMap();
-                SpawnMap(1);
-                MapListToScene();
-            }
-            if (item.buttonNorth.wasPressedThisFrame)
-            {
-                DestroyMap();
-                SpawnMap(2);
-                MapListToScene();
-            }
+        //foreach (var item in Gamepad.all)
+        //{
+        //    if (item.buttonEast.wasPressedThisFrame)
+        //    {
+        //        DestroyMap();
+        //        SpawnMap(1);
+        //        MapListToScene();
+        //    }
+        //    if (item.buttonNorth.wasPressedThisFrame)
+        //    {
+        //        DestroyMap();
+        //        SpawnMap(2);
+        //        MapListToScene();
+        //    }
 
-        }
+        //}
     }
     public void OnResourcesRetrived(AsyncOperationHandle<IList<GameObject>>obj)
     {
