@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class FireTrapTrigger : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private void OnTriggerEnter(Collider Player)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (Player.gameObject.name == "Character_1_mod" || Player.gameObject.name == "Character_2_mod")
+        {
+            Player.GetComponent<Move>().OnFireTrigger();
+        }
     }
 }
