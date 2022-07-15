@@ -117,25 +117,25 @@ public class Move : MonoBehaviour {
             ThisColor = NowColor.Red;
         }
     }
-    // void OnTriggerEnter(Collider other)
-    // {
-    //     if(other.gameObject.name == Prop_Name[0].text)//火機關觸發
-    //     {
+    void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.name == Prop_Name[0].text)//火機關觸發
+        {
 
-    //     }
-    //     else if(other.gameObject.name == Prop_Name[1].text)//雷機關
-    //     {
+        }
+        else if(other.gameObject.name == Prop_Name[1].text)//雷機關
+        {
             
-    //     }
-    //     else if(other.gameObject.name == Prop_Name[2].text)//霧機關
-    //     {
+        }
+        else if(other.gameObject.name == Prop_Name[2].text)//霧機關
+        {
             
-    //     }
-    //     if(other.gameObject.name == Prop_Name[3].text)//終點..
-    //     {
+        }
+        if(other.gameObject.name == Prop_Name[3].text)//終點..
+        {
             
-    //     }
-    // }
+        }
+    }
 
     void GridPosition()
     {
