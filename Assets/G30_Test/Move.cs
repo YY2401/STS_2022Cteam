@@ -19,12 +19,13 @@ public class Move : MonoBehaviour {
     public Player ThisPlayer;//這個玩家
     public NowColor ThisColor;
     public bool IsToEnd = false;
-    public GamePadRes Controller;
-
+    public GamePadRes Controller;private Move Another;
+    public GameController GM;
 
     void Start()
     {
-    
+        GM = GameObject.Find("GameController").GetComponent<GameController>();
+        CheckCollision(ThisPlayer);
         StartPos = new Vector2(transform.position.x,transform.position.z);
         
         switch(ThisPlayer)
@@ -38,6 +39,17 @@ public class Move : MonoBehaviour {
         }
 
     }
+    public void CheckCollision(Player _Player)
+    {
+        if (_Player == Player.Player1)
+        {
+            Another = GM.Player2;
+        }
+        else
+        {
+            Another = GM.Player1;
+        }
+    }
     public void ColorUpdate()
     {
         this.gameObject.GetComponent<MeshRenderer>().material = ColorMats[(int)ThisColor];
@@ -48,17 +60,21 @@ public class Move : MonoBehaviour {
             return;
         }
 
-        else if(Controller.LeftDpad.ReadValue().x == 1 && CanMoveVer == true && IsPlayer[2] == false)
+        else if(Controller.LeftDpad.ReadValue().x == 1 && CanMoveVer == true )
         {
             Debug.Log(this.gameObject.name+"LeftBtn");
             //Debug.Log(WorldPos+new Vector2(1,0));
-            if(mapspawn.GetType(WorldPos+new Vector2(1,0))==BlockType.Wall)
+            if(mapspawn.GetType(WorldPos+new Vector2(1,0))==BlockType.Wall )
             {
             return;
             }
+            if (WorldPos + new Vector2(1, 0) == Another.WorldPos)
+            {
+                return;
+            }
             CanMoveVer = false;
             StartCoroutine(Roll(Vector3.left));
-        }else if(Controller.LeftDpad.ReadValue().y == -1 && CanMoveHor == true&& IsPlayer[0] == false)
+        }else if(Controller.LeftDpad.ReadValue().y == -1 && CanMoveHor == true)
         {
             Debug.Log(this.gameObject.name+"UpBtn");
             //Debug.Log(WorldPos+new Vector2(0,-1));
@@ -66,10 +82,14 @@ public class Move : MonoBehaviour {
             {
             return;
             }
+            if (WorldPos + new Vector2(0, -1) == Another.WorldPos)
+            {
+                return;
+            }
             CanMoveHor = false;
             StartCoroutine(Roll(Vector3.forward));
         }
-        else if(Controller.LeftDpad.ReadValue().x == -1 && CanMoveVer == true && IsPlayer[3] == false)
+        else if(Controller.LeftDpad.ReadValue().x == -1 && CanMoveVer == true )
         {
             Debug.Log(this.gameObject.name+"RightBtn");
            //Debug.Log(WorldPos+new Vector2(-1,0));
@@ -77,16 +97,24 @@ public class Move : MonoBehaviour {
             {
             return;
             }
+            if (WorldPos + new Vector2(-1, 0) == Another.WorldPos)
+            {
+                return;
+            }
             CanMoveVer = false;
              StartCoroutine(Roll(Vector3.right));
         }
-        else if(Controller.LeftDpad.ReadValue().y == 1 && CanMoveHor == true&& IsPlayer[1] == false)
+        else if(Controller.LeftDpad.ReadValue().y == 1 && CanMoveHor == true)
         {
             Debug.Log(this.gameObject.name+"DownBtn");
             //Debug.Log(WorldPos+new Vector2(0,1));
             if(mapspawn.GetType(WorldPos+new Vector2(0,1))==BlockType.Wall)
             {
             return;
+            }
+            if (WorldPos + new Vector2(0, 1) == Another.WorldPos)
+            {
+                return;
             }
             CanMoveHor = false;
             StartCoroutine(Roll(Vector3.back));
@@ -117,25 +145,7 @@ public class Move : MonoBehaviour {
             ThisColor = NowColor.Red;
         }
     }
-    void OnTriggerEnter(Collider other)
-    {
-        if(other.gameObject.name == Prop_Name[0].text)//火機關觸發
-        {
 
-        }
-        else if(other.gameObject.name == Prop_Name[1].text)//雷機關
-        {
-            
-        }
-        else if(other.gameObject.name == Prop_Name[2].text)//霧機關
-        {
-            
-        }
-        if(other.gameObject.name == Prop_Name[3].text)//終點..
-        {
-            
-        }
-    }
 
     void GridPosition()
     {
