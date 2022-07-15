@@ -47,6 +47,8 @@ public class MapSpawner : MonoBehaviour
     {
         m_Blocks = obj.Result;
         Debug.Log("LoadComplete");
+        SpawnMap(1);
+        MapListToScene();
     }
     public void LoadBlockAssetData()
     {
