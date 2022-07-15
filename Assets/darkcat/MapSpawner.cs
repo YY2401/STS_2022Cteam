@@ -233,6 +233,7 @@ public class MapSpawner : MonoBehaviour
                         Floors.Add(Instantiate(FindAsset("MistTrap"), new Vector3(-2 * (i - 1), -2, -2 * (j - 1)), Quaternion.Euler(0, 90, 0)));
                         break;
                     case BlockType.ColorChanger:
+                        Floors.Add(Instantiate(FindAsset("ColorChanger"), new Vector3(-2 * (i - 1), -2, -2 * (j - 1)), Quaternion.Euler(0, 90, 0)));
                         break;
                     case BlockType.End:
                         if (Pattern == 0)
