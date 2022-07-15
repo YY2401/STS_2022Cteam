@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 3459761481157672761}
   - component: {fileID: 552906094250586268}
   - component: {fileID: 2326292139453219926}
+  - component: {fileID: 2385764029329852063}
+  - component: {fileID: 693666528995376480}
   m_Layer: 0
   m_Name: EndPoint_BlueSquareCollider
   m_TagString: Untagged
@@ -81,6 +83,33 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &2385764029329852063
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4271763271617029507}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.6, y: 0.6, z: 0.6}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &693666528995376480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4271763271617029507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67107fe5d9b4f254faa897d887a15773, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EndColor: 1
+  EndPlayer: 0
 --- !u!1 &8975103294100670235
 GameObject:
   m_ObjectHideFlags: 0

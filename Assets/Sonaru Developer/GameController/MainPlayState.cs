@@ -28,14 +28,16 @@ public class MainPlayState : IState
     public void OnStateStay()
     {
         // if Time over -> game over scene
-        
+        if(gameTimer.IsFinish) Controller.ChangeState(StateEnum.GameOver);
         // else if Player1 & Player2 arrive finish point -> main play scene
-        if(gameTimer.IsFinish) Controller.ChangeState(StateEnum.MainPlay);
+        if(AllPlayerArriveFinish()) Controller.ChangeState(StateEnum.MainPlay);
     }
 
     public void OnStateExit()
     {
         Controller.MapControl.DestroyMap();
+        Controller.Player1.IsToEnd = false;
+        Controller.Player2.IsToEnd = false;
         //Object.Destroy(debugText.gameObject);
     }
 
@@ -46,4 +48,6 @@ public class MainPlayState : IState
         Controller.MapControl.MapListToScene();
         gameTimer.Resume();
     }
+
+    private bool AllPlayerArriveFinish() =>  Controller.Player1.IsToEnd && Controller.Player2.IsToEnd;
 }
