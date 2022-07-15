@@ -51,6 +51,8 @@ public class MainPlayState : IState
     {
         Controller.MapControl.SpawnMap(Controller.CurrentRound);
         Controller.MapControl.MapListToScene();
+        Controller.Player1.GetComponent<Animator>().enabled = false;
+        Controller.Player2.GetComponent<Animator>().enabled = false;
         gameTimer.Resume();
     }
 
