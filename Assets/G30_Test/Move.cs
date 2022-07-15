@@ -4,8 +4,10 @@ using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
 using System.Linq;
 using UnityEngine.UI;
-public class Move : MonoBehaviour { 
+public class Move : MonoBehaviour {
+    public GameObject ThisPlayerOBJ;
     public MapSpawner mapspawn;
+    public Material[] ColorMats;
     public int speed = 300;
     bool isMoving = false;
     bool CanMoveVer = true;
@@ -13,6 +15,8 @@ public class Move : MonoBehaviour {
     public  Vector2 WorldPos;
     Vector3 StartPos;
     public Player ThisPlayer;//這個玩家
+    public NowColor ThisColor;
+    public bool IsToEnd = false;
     public GamePadRes Controller;
 
 
@@ -32,8 +36,12 @@ public class Move : MonoBehaviour {
         }
 
     }
-
+    public void ColorUpdate()
+    {
+        this.gameObject.GetComponent<MeshRenderer>().material = ColorMats[(int)ThisColor];
+    }
     void Update() {
+        ColorUpdate();
         if (isMoving) {
             return;
         }
@@ -132,4 +140,9 @@ public enum Player
 {
 Player1,
 Player2,
+}
+public enum NowColor
+{
+    Red,
+    Blue,
 }

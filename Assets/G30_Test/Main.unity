@@ -169,10 +169,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95f41d4aa7438bb49a7fb247e93dd823, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ThisPlayerOBJ: {fileID: 24154793}
   mapspawn: {fileID: 1703335968}
+  ColorMats:
+  - {fileID: 2100000, guid: ea4ddf154109bf34ea310ae542848b82, type: 2}
+  - {fileID: 2100000, guid: 5814473d49469e84bb77d902a42400a3, type: 2}
   speed: 300
   WorldPos: {x: 0, y: 0}
   ThisPlayer: 1
+  ThisColor: 0
+  IsToEnd: 0
   Controller: {fileID: 0}
 --- !u!1 &99791800
 GameObject:
@@ -334,6 +340,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1022490080}
     m_Modifications:
+    - target: {fileID: 622251502991921558, guid: d4182c31c8ab12441b8db2ee76cbb47a, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 622251502991921558, guid: d4182c31c8ab12441b8db2ee76cbb47a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ebfa5e1ca6e96614eb91d3444d84fffd, type: 2}
+    - target: {fileID: 622251502991921558, guid: d4182c31c8ab12441b8db2ee76cbb47a, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: ebfa5e1ca6e96614eb91d3444d84fffd, type: 2}
     - target: {fileID: 1414783400457728067, guid: d4182c31c8ab12441b8db2ee76cbb47a, type: 3}
       propertyPath: m_Name
       value: Character_1_mod
@@ -386,6 +404,22 @@ PrefabInstance:
       propertyPath: mapspawn
       value: 
       objectReference: {fileID: 1703335968}
+    - target: {fileID: 3014891632949165309, guid: d4182c31c8ab12441b8db2ee76cbb47a, type: 3}
+      propertyPath: ThisColor
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3014891632949165309, guid: d4182c31c8ab12441b8db2ee76cbb47a, type: 3}
+      propertyPath: ColorMats.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3014891632949165309, guid: d4182c31c8ab12441b8db2ee76cbb47a, type: 3}
+      propertyPath: ColorMats.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: fffbc25bd896e7f499b3cf9c96809675, type: 2}
+    - target: {fileID: 3014891632949165309, guid: d4182c31c8ab12441b8db2ee76cbb47a, type: 3}
+      propertyPath: ColorMats.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: ebfa5e1ca6e96614eb91d3444d84fffd, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d4182c31c8ab12441b8db2ee76cbb47a, type: 3}
 --- !u!1 &268049827
@@ -770,6 +804,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3147870369570734370, guid: fe546b199e06b6f488b54c74920be8a4, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ea4ddf154109bf34ea310ae542848b82, type: 2}
     - target: {fileID: 3508171191214039287, guid: fe546b199e06b6f488b54c74920be8a4, type: 3}
       propertyPath: m_Name
       value: Character_2_mod
