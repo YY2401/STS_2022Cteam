@@ -13,14 +13,13 @@ public class MapSpawner : MonoBehaviour
     public MapSO MapPreMade;
     private List<Vector2> TrapPos = new List<Vector2>();
     private List<Vector2> ColorChanger = new List<Vector2>();
-    private List<Vector2> EndPos = new List<Vector2>();
+    public List<Vector2> EndPos = new List<Vector2>();
     public GameObject[] EndBlock;
     public IList<GameObject> m_Blocks;
     public AssetLabelReference m_BlocksLables;
     private List<GameObject> Floors = new List<GameObject>();
     void Start()
     {
-        SpawnMap(1);
         Addressables.LoadAssetsAsync<GameObject>(m_BlocksLables, null).Completed += OnResourcesRetrived;
         
     }
@@ -36,7 +35,13 @@ public class MapSpawner : MonoBehaviour
                 SpawnMap(1);
                 MapListToScene();
             }
-            
+            if (item.buttonNorth.wasPressedThisFrame)
+            {
+                DestroyMap();
+                SpawnMap(2);
+                MapListToScene();
+            }
+
         }
     }
     public void OnResourcesRetrived(AsyncOperationHandle<IList<GameObject>>obj)
@@ -46,6 +51,9 @@ public class MapSpawner : MonoBehaviour
     }
     public void SpawnMap(int Round)
     {
+        TrapPos.Clear();
+        ColorChanger.Clear();
+        EndPos.Clear();
         if (Round%2 == 1)
         {
             //³æ¦^¦X
@@ -53,7 +61,7 @@ public class MapSpawner : MonoBehaviour
             {
                 for (int j = 0; j < MapPreMade.ThisMap[i].ThisColumn.Count; j++)
                 {
-                    Debug.Log(i.ToString()+j.ToString());
+                    //Debug.Log(i.ToString()+j.ToString());
                     switch (MapPreMade.ThisMap[i].ThisColumn[j].ThisBlockType)
                     {
                         case BlockType.Wall:
@@ -97,7 +105,7 @@ public class MapSpawner : MonoBehaviour
                         break;
                 }
                 TrapPos.RemoveAt(r);
-            }
+            }            
             for (int i = 0; i < 2; i++)
             {
                 int r = Random.Range(0, ColorChanger.Count);
@@ -107,10 +115,11 @@ public class MapSpawner : MonoBehaviour
             for (int i = 0; i < 2; i++)
             {
                 int r = Random.Range(0, EndPos.Count);
-                Debug.Log(r);
+                //Debug.LogError(EndPos[r]);
                 MapData.ThisColumnData[(int)EndPos[r].x].ThisBlockData[(int)EndPos[r].y] = BlockType.End;
                 EndPos.RemoveAt(r);
             }
+            
         }
         else
         {
@@ -173,7 +182,7 @@ public class MapSpawner : MonoBehaviour
             for (int i = 0; i < 2; i++)
             {
                 int r = Random.Range(0, EndPos.Count);
-                Debug.Log(r);
+                Debug.LogWarning(EndPos[r]);
                 MapData.ThisColumnData[(int)EndPos[r].x].ThisBlockData[(int)EndPos[r].y] = BlockType.End;
                 EndPos.RemoveAt(r);
             }
@@ -206,30 +215,47 @@ public class MapSpawner : MonoBehaviour
                 {
                     case BlockType.Road:
                         int rr = Random.Range(0, 3);
-                        Floors.Add( Instantiate(FindAsset("Floor"+rr), new Vector3(-2 * (i - 1), -2, -2 * (j - 1)), Quaternion.identity));
+                        Floors.Add( Instantiate(FindAsset("Floor"+rr), new Vector3(-2 * (i - 1), -2, -2 * (j - 1)),Quaternion.identity));
                         break;
                     case BlockType.FireTrap:
-                        
+                        Floors.Add(Instantiate(FindAsset("FireTrap"), new Vector3(-2 * (i - 1), -2, -2 * (j - 1)), Quaternion.Euler(0, 90, 0)));
                         break;
                     case BlockType.ThunderTrap:
-                        Floors.Add(Instantiate(FindAsset("LightingTrap"), new Vector3(-2 * (i - 1), -2, -2 * (j - 1)), Quaternion.identity));
+                        Floors.Add(Instantiate(FindAsset("LightingTrap"), new Vector3(-2 * (i - 1), -2, -2 * (j - 1)), Quaternion.Euler(0, 90, 0)));
                         break;
                     case BlockType.MistTrap:
+                        Floors.Add(Instantiate(FindAsset("MistTrap"), new Vector3(-2 * (i - 1), -2, -2 * (j - 1)), Quaternion.Euler(0, 90, 0)));
                         break;
                     case BlockType.ColorChanger:
                         break;
                     case BlockType.End:
                         if (Pattern == 0)
                         {
-                            
+                            if (BoxSpawn)
+                            {
+                                Floors.Add(Instantiate(FindAsset("EndPoint_BlueSquare"), new Vector3(-2 * (i - 1), -2, -2 * (j - 1)), Quaternion.Euler(0, 90, 0)));
+                            }
+                            else
+                            {
+                                Floors.Add(Instantiate(FindAsset("EndPoint_RedHolo"), new Vector3(-2 * (i - 1), -2, -2 * (j - 1)), Quaternion.Euler(0, 90, 0)));
+                                BoxSpawn = true;
+                            }
                         }
                         else
                         {
-
+                            if (BoxSpawn)
+                            {
+                                Floors.Add(Instantiate(FindAsset("EndPoint_RedSquare"), new Vector3(-2 * (i - 1), -2, -2 * (j - 1)), Quaternion.Euler(0, 90, 0)));
+                            }
+                            else
+                            {
+                                Floors.Add(Instantiate(FindAsset("EndPoint_BlueHolo"), new Vector3(-2 * (i - 1), -2, -2 * (j - 1)), Quaternion.Euler(0, 90, 0)));
+                                BoxSpawn = true;
+                            }
                         }
                         break;
                 }
-                Debug.Log(i.ToString() + j.ToString() + MapData.ThisColumnData[i].ThisBlockData[j].ToString());
+                //Debug.Log(i.ToString() + j.ToString() + MapData.ThisColumnData[i].ThisBlockData[j].ToString());
             }
         }
     }

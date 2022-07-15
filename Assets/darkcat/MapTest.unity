@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 16bc8a9d5451ca44d8f70575adbece3a, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.15025589, g: 0.15016247, b: 0.19305167, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -277,7 +277,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 893825597}
   m_LocalRotation: {x: 0, y: 0.9135455, z: -0.40673664, w: 0}
-  m_LocalPosition: {x: -6, y: 10.04, z: 5.43}
+  m_LocalPosition: {x: -6, y: 10.04, z: 5.69}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -346,7 +346,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1414783400457728067, guid: d4182c31c8ab12441b8db2ee76cbb47a, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1795109607515269881, guid: d4182c31c8ab12441b8db2ee76cbb47a, type: 3}
       propertyPath: m_RootOrder
@@ -480,6 +480,7 @@ MonoBehaviour:
     - ThisBlockData: 000000000000000000000000000000000000000000000000000000000000000000000000
     - ThisBlockData: 000000000000000000000000000000000000000000000000000000000000000000000000
   MapPreMade: {fileID: 11400000, guid: a88d671a9d2b21e448f5c276cadb68eb, type: 2}
+  EndPos: []
   EndBlock: []
   m_BlocksLables:
     m_LabelString: Blocks
@@ -621,7 +622,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3508171191214039287, guid: fe546b199e06b6f488b54c74920be8a4, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4315670760197864013, guid: fe546b199e06b6f488b54c74920be8a4, type: 3}
       propertyPath: m_RootOrder
