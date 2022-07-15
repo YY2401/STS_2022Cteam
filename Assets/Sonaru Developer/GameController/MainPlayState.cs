@@ -30,7 +30,8 @@ public class MainPlayState : IState
 
     public void OnStateStay()
     {
-        Debug.Log(gameTimer.Remain);
+        Debug.Log(gameTimer.Remain01);
+        TimeBar.instance.currentTime =(gameTimer.Remain01);
         // if Time over -> game over scene
         if(gameTimer.IsFinish) Controller.ChangeState(StateEnum.GameOver);
         // else if Player1 & Player2 arrive finish point -> main play scene

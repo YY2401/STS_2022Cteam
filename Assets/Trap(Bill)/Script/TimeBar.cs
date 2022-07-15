@@ -5,26 +5,28 @@ using UnityEngine.UI;
 
 public class TimeBar : MonoBehaviour
 {
-    Image m_TimeBar;
+    [SerializeField]Image m_TimeBar;
     public float currentTime;   
-    private float maxTime;
+    public float maxTime;
+    public static TimeBar instance;
     //
-
+    private void Awake()
+    {
+        instance = this;
+    }
 
     // Start is called before the first frame update
     void Start()
     {
         m_TimeBar = GetComponent<Image>();
-        currentTime = maxTime;
+        //currentTime = maxTime;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(currentTime >0)
-        {
-            currentTime -= Time.deltaTime;
-            m_TimeBar.fillAmount = currentTime / maxTime;
-        }
+            //currentTime -= Time.deltaTime;
+            m_TimeBar.fillAmount = currentTime;
+        
     }
 }
