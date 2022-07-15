@@ -2,20 +2,26 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
+using System.Linq;
+using UnityEngine.UI;
 public class Move : MonoBehaviour { 
     public int speed = 300;
     bool isMoving = false;
-    
     bool CanMove = true;
-
     public static Vector2 WorldPos;
     Vector3 StartPos;
+
+    public Collider[]CurrentCubes;
+    Collider[] cubesinsideZone;
+    public Text[] ObjectLIstInZone;
+    Collider[] cubesOutsideZone;
 
     void Start()
     {
         
         StartPos = new Vector2(transform.position.x,transform.position.z);
         WorldPos = new Vector2(0,0);
+
     }
 
     void Update() {
@@ -53,6 +59,12 @@ public class Move : MonoBehaviour {
         GridPosition();
     }
 
+    void FixedUpdate()
+    {
+        
+    }
+
+
     void GridPosition()
     {
         int WorldPos_X = Mathf.Abs(Mathf.FloorToInt(gameObject.transform.position.x - StartPos.x)) ;
@@ -79,4 +91,5 @@ public class Move : MonoBehaviour {
 
         isMoving = false;
     }
+
 }
