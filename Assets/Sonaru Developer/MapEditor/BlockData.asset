@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bad3601868045658eca3f05a3db6c9a, type: 3}
   m_Name: BlockData
   m_EditorClassIdentifier: 
-  CCS: {fileID: 0}
-  DES: {fileID: 0}
-  SES: {fileID: 0}
-  TS: {fileID: 0}
-  RD: {fileID: 0}
-  WL: {fileID: 0}
+  CCS: {fileID: 11400000, guid: a1ad384ecf11f084b9a82cc3d84632f2, type: 2}
+  DES: {fileID: 11400000, guid: 517b8d4d587fc1443bac6ee076c9eb24, type: 2}
+  SES: {fileID: 11400000, guid: a9f41d5e47b41dc49911ef01b4ad6dc4, type: 2}
+  TS: {fileID: 11400000, guid: 533c4ac14ccdbc749b510520fa5d217e, type: 2}
+  RD: {fileID: 11400000, guid: c1801127debfd864a90ebb2e511a9ee3, type: 2}
+  WL: {fileID: 11400000, guid: 9d04c337c9a339e45bab8c80a080ea41, type: 2}
