@@ -72,6 +72,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Blocks
+  - m_GUID: 9aab4392cbe869e47aa8f861b46145a1
+    m_Address: ColorChanger
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Blocks
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: f129e8a5b2517ca41b0b479246bf6abd, type: 2}
   m_SchemaSet:
