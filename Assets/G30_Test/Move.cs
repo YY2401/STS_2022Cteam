@@ -4,12 +4,13 @@ using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
 using System.Linq;
 using UnityEngine.UI;
-using System;
-
+using UnityEngine.Events;
 public class Move : MonoBehaviour {
     public GameObject ThisPlayerOBJ;
     public MapSpawner mapspawn;
     public Material[] ColorMats;
+    public bool[] IsPlayer = new bool[4];//前方偵測玩家(順序：前、後、左、右)
+    public Text[] Prop_Name = new Text[4];
     public int speed = 300;
     bool isMoving = false;
     bool CanMoveVer = true;
@@ -19,12 +20,12 @@ public class Move : MonoBehaviour {
     public Player ThisPlayer;//這個玩家
     public NowColor ThisColor;
     public bool IsToEnd = false;
-    public GamePadRes Controller;
-
-
+    public GamePadRes Controller;private Move Another;
+    public GameController GM;
     void Start()
     {
-    
+        GM = GameObject.Find("GameController").GetComponent<GameController>();
+        CheckCollision(ThisPlayer);
         StartPos = new Vector2(transform.position.x,transform.position.z);
         
         switch(ThisPlayer)
@@ -38,6 +39,17 @@ public class Move : MonoBehaviour {
         }
 
     }
+    public void CheckCollision(Player _Player)
+    {
+        if (_Player == Player.Player1)
+        {
+            Another = GM.Player2;
+        }
+        else
+        {
+            Another = GM.Player1;
+        }
+    }
     public void ColorUpdate()
     {
         this.gameObject.GetComponent<MeshRenderer>().material = ColorMats[(int)ThisColor];
@@ -48,13 +60,17 @@ public class Move : MonoBehaviour {
             return;
         }
 
-        else if(Controller.LeftDpad.ReadValue().x == 1 && CanMoveVer == true)
+        else if(Controller.LeftDpad.ReadValue().x == 1 && CanMoveVer == true )
         {
             Debug.Log(this.gameObject.name+"LeftBtn");
             //Debug.Log(WorldPos+new Vector2(1,0));
-            if(mapspawn.GetType(WorldPos+new Vector2(1,0))==BlockType.Wall)
+            if(mapspawn.GetType(WorldPos+new Vector2(1,0))==BlockType.Wall )
             {
             return;
+            }
+            if (WorldPos + new Vector2(1, 0) == Another.WorldPos)
+            {
+                return;
             }
             CanMoveVer = false;
             StartCoroutine(Roll(Vector3.left));
@@ -65,6 +81,10 @@ public class Move : MonoBehaviour {
             if(mapspawn.GetType(WorldPos+new Vector2(0,-1))==BlockType.Wall)
             {
             return;
+            }
+            if (WorldPos + new Vector2(0, -1) == Another.WorldPos)
+            {
+                return;
             }
             CanMoveHor = false;
             StartCoroutine(Roll(Vector3.forward));
@@ -77,6 +97,10 @@ public class Move : MonoBehaviour {
             {
             return;
             }
+            if (WorldPos + new Vector2(-1, 0) == Another.WorldPos)
+            {
+                return;
+            }
             CanMoveVer = false;
              StartCoroutine(Roll(Vector3.right));
         }
@@ -87,6 +111,10 @@ public class Move : MonoBehaviour {
             if(mapspawn.GetType(WorldPos+new Vector2(0,1))==BlockType.Wall)
             {
             return;
+            }
+            if (WorldPos + new Vector2(0, 1) == Another.WorldPos)
+            {
+                return;
             }
             CanMoveHor = false;
             StartCoroutine(Roll(Vector3.back));
@@ -117,7 +145,7 @@ public class Move : MonoBehaviour {
             ThisColor = NowColor.Red;
         }
     }
-    void OnTriggerEnter(Collider other)
+    public void OnFireTrigger()
     {
         
     }
@@ -127,6 +155,8 @@ public class Move : MonoBehaviour {
         int WorldPos_X = Mathf.RoundToInt(gameObject.transform.position.x * -1)/ 2;
         int WorldPos_Y = Mathf.RoundToInt(gameObject.transform.position.z * -1) / 2;
         WorldPos = new Vector2(1+WorldPos_X ,1+WorldPos_Y );
+        //Debug.Log("WorldPos"+WorldPos);
+        //Debug.Log("WorldPosX"+WorldPos_X);
         
        
     }

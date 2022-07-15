@@ -15,6 +15,8 @@ public class GameController : MonoBehaviour
     
     private int currentRound;
 
+    public event Action<float> OnFireTrigger;
+
     public int CurrentRound
     {
         get => currentRound;
@@ -59,10 +61,15 @@ public class GameController : MonoBehaviour
         allState[CurrentState]?.OnStateEnter(this);
     }
 
-    private void calcRoundTime(int round) => currentRoundCountDown = Mathf.Max(FirstRoundCountDown - round + 1, 5);
-    
+    public void ReducePlayTimer(float time)
+    {
+        OnFireTrigger?.Invoke(time);         
+    }
 
-#region Delay Do Something Function
+    private void calcRoundTime(int round) => currentRoundCountDown = Mathf.Max(FirstRoundCountDown - round + 1, 5);
+
+
+    #region Delay Do Something Function
 
     public void DelayDo(Action onComplete, float delay)
     {
