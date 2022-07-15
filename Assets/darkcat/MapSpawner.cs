@@ -18,6 +18,7 @@ public class MapSpawner : MonoBehaviour
     public IList<GameObject> m_Blocks;
     public AssetLabelReference m_BlocksLables;
     private List<GameObject> Floors = new List<GameObject>();
+    public Transform SpawnParent;
     void Start()
     {
         LoadBlockAssetData();
