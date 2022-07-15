@@ -17,7 +17,7 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 1e6003d3f498f2d4a9d75d201f3da147
   m_SerializeEntries:
-  - m_GUID: 73fa6168127bdcd45bae58e3f93331da
+  - m_GUID: 09655e13e2fb18f498815a7c075e0808
     m_Address: FireTrap
     m_ReadOnly: 0
     m_SerializedLabels:
@@ -29,6 +29,21 @@ MonoBehaviour:
     - Blocks
   - m_GUID: d17d21d787334734eb629a1fcddb4844
     m_Address: LightingTrap
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Blocks
+  - m_GUID: c7522b7408b79f643863b260dd30b3a8
+    m_Address: Floor0
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Blocks
+  - m_GUID: 4423f1885b3eaca4a82fd29e07695caa
+    m_Address: Floor1
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Blocks
+  - m_GUID: 21ef922a6b6a5ba4ab5b94b9066c34fd
+    m_Address: Floor2
     m_ReadOnly: 0
     m_SerializedLabels:
     - Blocks

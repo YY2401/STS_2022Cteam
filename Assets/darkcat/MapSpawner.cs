@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.ResourceManagement.ResourceLocations;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Controls;
 
 public class MapSpawner : MonoBehaviour
 {
@@ -15,6 +17,7 @@ public class MapSpawner : MonoBehaviour
     public GameObject[] EndBlock;
     public IList<GameObject> m_Blocks;
     public AssetLabelReference m_BlocksLables;
+    private List<GameObject> Floors = new List<GameObject>();
     void Start()
     {
         SpawnMap(1);
@@ -25,7 +28,16 @@ public class MapSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        foreach (var item in Gamepad.all)
+        {
+            if (item.buttonEast.wasPressedThisFrame)
+            {
+                DestroyMap();
+                SpawnMap(1);
+                MapListToScene();
+            }
+            
+        }
     }
     public void OnResourcesRetrived(AsyncOperationHandle<IList<GameObject>>obj)
     {
@@ -192,11 +204,15 @@ public class MapSpawner : MonoBehaviour
             {
                 switch (MapData.ThisColumnData[i].ThisBlockData[j])
                 {
+                    case BlockType.Road:
+                        int rr = Random.Range(0, 3);
+                        Floors.Add( Instantiate(FindAsset("Floor"+rr), new Vector3(-2 * (i - 1), -2, -2 * (j - 1)), Quaternion.identity));
+                        break;
                     case BlockType.FireTrap:
                         
                         break;
                     case BlockType.ThunderTrap:
-                        Instantiate(FindAsset("LightingTrap"), new Vector3(-2 * (i - 1), -2, -2 * (j - 1)), Quaternion.identity);
+                        Floors.Add(Instantiate(FindAsset("LightingTrap"), new Vector3(-2 * (i - 1), -2, -2 * (j - 1)), Quaternion.identity));
                         break;
                     case BlockType.MistTrap:
                         break;
@@ -215,6 +231,13 @@ public class MapSpawner : MonoBehaviour
                 }
                 Debug.Log(i.ToString() + j.ToString() + MapData.ThisColumnData[i].ThisBlockData[j].ToString());
             }
+        }
+    }
+    public void DestroyMap()
+    {
+        foreach (var item in Floors)
+        {
+            Destroy(item);
         }
     }
 }
