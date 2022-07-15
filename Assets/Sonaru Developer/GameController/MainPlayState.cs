@@ -61,6 +61,6 @@ public class MainPlayState : IState
 
     private void reduceTime(float time)
     {
-        gameTimer.Reset(Mathf.Max(gameTimer.Remain - time, 0));
+        gameTimer.Reduce(time);
     }
 }

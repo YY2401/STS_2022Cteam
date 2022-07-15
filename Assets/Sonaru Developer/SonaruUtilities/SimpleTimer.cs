@@ -52,7 +52,10 @@ namespace SonaruUtilities
             finishTime = newTimer + Time.time;
             IsPause = false;
         }
-    
-        
+
+        public void Reduce(float reduceTime)
+        {
+            finishTime -= reduceTime;
+        }
     }
 }
