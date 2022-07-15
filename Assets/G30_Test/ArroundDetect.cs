@@ -23,32 +23,32 @@ public class ArroundDetect : MonoBehaviour
             {
                 case "Forward_1P":
                     Debug.Log("Forward");
-                    //Player_1P.GetComponent<Move>().IsPlayer[0] = true;
+                    Player_1P.GetComponent<Move>().IsPlayer[0] = true;
                 break;
 
                 case "Right_1P":
                     Debug.Log("Right");
-                    //Player_1P.GetComponent<Move>().IsPlayer[3] = true;
+                    Player_1P.GetComponent<Move>().IsPlayer[3] = true;
                 break;
 
                 case "Back_1P":
                     Debug.Log("Back");
-                    //Player_1P.GetComponent<Move>().IsPlayer[1] = true;
+                    Player_1P.GetComponent<Move>().IsPlayer[1] = true;
                 break;
 
                 case "Left_1P":
                     Debug.Log("Left");
-                    //Player_1P.GetComponent<Move>().IsPlayer[2] = true;
+                    Player_1P.GetComponent<Move>().IsPlayer[2] = true;
                 break;
 
             }
         }
         else
         {
-            // Player_1P.GetComponent<Move>().IsPlayer[0] = false;
-            // Player_1P.GetComponent<Move>().IsPlayer[1] = false;
-            // Player_1P.GetComponent<Move>().IsPlayer[2] = false;
-            // Player_1P.GetComponent<Move>().IsPlayer[3] = false;
+            Player_1P.GetComponent<Move>().IsPlayer[0] = false;
+            Player_1P.GetComponent<Move>().IsPlayer[1] = false;
+            Player_1P.GetComponent<Move>().IsPlayer[2] = false;
+            Player_1P.GetComponent<Move>().IsPlayer[3] = false;
         }
     }
 }

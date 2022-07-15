@@ -4,7 +4,6 @@ using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
 using System.Linq;
 using UnityEngine.UI;
-using UnityEngine.Events;
 public class Move : MonoBehaviour {
     public GameObject ThisPlayerOBJ;
     public MapSpawner mapspawn;
@@ -60,7 +59,7 @@ public class Move : MonoBehaviour {
             return;
         }
 
-        else if(Controller.LeftDpad.ReadValue().x == 1 && CanMoveVer == true )
+        else if(Controller.LeftDpad.ReadValue().x == 1 && CanMoveVer == true)
         {
             Debug.Log(this.gameObject.name+"LeftBtn");
             //Debug.Log(WorldPos+new Vector2(1,0));
@@ -74,7 +73,7 @@ public class Move : MonoBehaviour {
             }
             CanMoveVer = false;
             StartCoroutine(Roll(Vector3.left));
-        }else if(Controller.LeftDpad.ReadValue().y == -1 && CanMoveHor == true)
+        }else if(Controller.LeftDpad.ReadValue().y == -1 && CanMoveHor == true&& IsPlayer[0] == false)
         {
             Debug.Log(this.gameObject.name+"UpBtn");
             //Debug.Log(WorldPos+new Vector2(0,-1));
@@ -89,7 +88,7 @@ public class Move : MonoBehaviour {
             CanMoveHor = false;
             StartCoroutine(Roll(Vector3.forward));
         }
-        else if(Controller.LeftDpad.ReadValue().x == -1 && CanMoveVer == true )
+        else if(Controller.LeftDpad.ReadValue().x == -1 && CanMoveVer == true && IsPlayer[3] == false)
         {
             Debug.Log(this.gameObject.name+"RightBtn");
            //Debug.Log(WorldPos+new Vector2(-1,0));
@@ -104,7 +103,7 @@ public class Move : MonoBehaviour {
             CanMoveVer = false;
              StartCoroutine(Roll(Vector3.right));
         }
-        else if(Controller.LeftDpad.ReadValue().y == 1 && CanMoveHor == true)
+        else if(Controller.LeftDpad.ReadValue().y == 1 && CanMoveHor == true&& IsPlayer[1] == false)
         {
             Debug.Log(this.gameObject.name+"DownBtn");
             //Debug.Log(WorldPos+new Vector2(0,1));
