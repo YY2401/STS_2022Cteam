@@ -7,24 +7,43 @@ public class ArroundDetect : MonoBehaviour
     void OnTriggerStay(Collider other)
     {
         if(other.gameObject.name == "Character_2_mod")
+        //偵測周遭有沒有碰到玩家
         {
-            Debug.Log("CC");
-            if(this.gameObject.name == "Forward")
+            switch(this.gameObject.name)
             {
-                Debug.Log("Forward");
+                case "Forward":
+                    Debug.Log("Forward");
+                break;
+
+                case "Right":
+                    Debug.Log("Right");
+                break;
+
+                case "Back":
+                    Debug.Log("Back");
+                break;
+
+                case "Left":
+                    Debug.Log("Left");
+                break;
+
             }
-            else if(this.gameObject.name == "Right")
-            {
-                Debug.Log("CCC");
-            }
-            else if(this.gameObject.name == "Back")
-            {
-                Debug.Log("CCC");
-            }
-            else if(this.gameObject.name == "Left")
-            {
-                Debug.Log("CCC");
-            }
+            // if(this.gameObject.name == "Forward")//前方
+            // {
+            //     Debug.Log("Forward");
+            // }
+            // else if(this.gameObject.name == "Right")//右方
+            // {
+            //     Debug.Log("Right");
+            // }
+            // else if(this.gameObject.name == "Back")//後方
+            // {
+            //     Debug.Log("Back");
+            // }
+            // else if(this.gameObject.name == "Left")//左方
+            // {
+            //     Debug.Log("Left");
+            // }
         }
     }
 }
