@@ -9,7 +9,7 @@ public class Move : MonoBehaviour {
     public MapSpawner mapspawn;
     public Material[] ColorMats;
     public bool[] IsPlayer = new bool[4];//前方偵測玩家(順序：前、後、左、右)
-
+    public Text[] Prop_Name = new Text[4];
     public int speed = 300;
     bool isMoving = false;
     bool CanMoveVer = true;
@@ -105,6 +105,26 @@ public class Move : MonoBehaviour {
     void FixedUpdate()
     {
         
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.name == Prop_Name[0].text)//火機關觸發
+        {
+
+        }
+        else if(other.gameObject.name == Prop_Name[1].text)//雷機關
+        {
+            
+        }
+        else if(other.gameObject.name == Prop_Name[2].text)//霧機關
+        {
+            
+        }
+        if(other.gameObject.name == Prop_Name[3].text)//終點..
+        {
+            
+        }
     }
 
 
