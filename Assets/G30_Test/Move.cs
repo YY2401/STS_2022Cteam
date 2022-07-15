@@ -10,7 +10,7 @@ public class Move : MonoBehaviour {
     bool isMoving = false;
     bool CanMoveVer = true;
     bool CanMoveHor = true;
-    public static Vector2 WorldPos;
+    public  Vector2 WorldPos;
     Vector3 StartPos;
     public Player ThisPlayer;//這個玩家
     public GamePadRes Controller;
@@ -38,9 +38,10 @@ public class Move : MonoBehaviour {
             return;
         }
 
-        else if(Controller._gamepad.dpad.x.ReadValue() == 1 && Gamepad.current.dpad.IsPressed() && CanMoveVer == true)
+        else if(Controller.LeftDpad.ReadValue().x == 1 && CanMoveVer == true)
         {
-            Debug.Log("LeftBtn");
+            Debug.Log(this.gameObject.name+"LeftBtn");
+            //Debug.Log(WorldPos+new Vector2(1,0));
             if(mapspawn.GetType(WorldPos+new Vector2(1,0))==BlockType.Wall)
             {
             return;
@@ -48,9 +49,10 @@ public class Move : MonoBehaviour {
             CanMoveVer = false;   
             Debug.Log(222);
             StartCoroutine(Roll(Vector3.left));
-        }else if(Controller._gamepad.dpad.y.ReadValue() == -1 && Gamepad.current.dpad.IsPressed()&& CanMoveHor == true)
+        }else if(Controller.LeftDpad.ReadValue().y == -1 && CanMoveHor == true)
         {
-            Debug.Log("UpBtn");
+            Debug.Log(this.gameObject.name+"UpBtn");
+            //Debug.Log(WorldPos+new Vector2(0,-1));
             if(mapspawn.GetType(WorldPos+new Vector2(0,-1))==BlockType.Wall)
             {
             return;
@@ -58,9 +60,10 @@ public class Move : MonoBehaviour {
             CanMoveHor = false;
             StartCoroutine(Roll(Vector3.forward));
         }
-        else if(Controller._gamepad.dpad.x.ReadValue() == -1 && Gamepad.current.dpad.IsPressed()&& CanMoveVer == true)
+        else if(Controller.LeftDpad.ReadValue().x == -1 && CanMoveVer == true)
         {
-            Debug.Log("RightBtn");
+            Debug.Log(this.gameObject.name+"RightBtn");
+           //Debug.Log(WorldPos+new Vector2(-1,0));
             if(mapspawn.GetType(WorldPos+new Vector2(-1,0))==BlockType.Wall)
             {
             return;
@@ -68,9 +71,10 @@ public class Move : MonoBehaviour {
             CanMoveVer = false;
              StartCoroutine(Roll(Vector3.right));
         }
-        else if(Controller._gamepad.dpad.y.ReadValue() == 1 && Gamepad.current.dpad.IsPressed()&& CanMoveHor == true)
+        else if(Controller.LeftDpad.ReadValue().y == 1 && CanMoveHor == true)
         {
-            Debug.Log("DownBtn");
+            Debug.Log(this.gameObject.name+"DownBtn");
+            //Debug.Log(WorldPos+new Vector2(0,1));
             if(mapspawn.GetType(WorldPos+new Vector2(0,1))==BlockType.Wall)
             {
             return;
@@ -78,11 +82,11 @@ public class Move : MonoBehaviour {
             CanMoveHor = false;
             StartCoroutine(Roll(Vector3.back));
         }
-        if(Gamepad.current.dpad.x.ReadValue()<=0.95&&Gamepad.current.dpad.x.ReadValue()>=-0.95&&CanMoveVer == false)
+        if(Controller.LeftDpad.ReadValue().x<=0.85&&Controller.LeftDpad.ReadValue().x>=-0.85&&CanMoveVer == false)
         {
             CanMoveVer = true;
         }
-        if(Gamepad.current.dpad.y.ReadValue()<=0.95&&Gamepad.current.dpad.y.ReadValue()>=-0.95&&CanMoveHor == false)
+        if(Controller.LeftDpad.ReadValue().y<=0.85&&Controller.LeftDpad.ReadValue().y>=-0.85&&CanMoveHor == false)
         {
             CanMoveHor = true;
         }
@@ -97,11 +101,11 @@ public class Move : MonoBehaviour {
 
     void GridPosition()
     {
-        int WorldPos_X = Mathf.RoundToInt(gameObject.transform.position.x * -1- StartPos.x)/ 2;
-        int WorldPos_Y = Mathf.Abs(Mathf.FloorToInt(gameObject.transform.position.z - StartPos.y)) / 2;
+        int WorldPos_X = Mathf.RoundToInt(gameObject.transform.position.x * -1)/ 2;
+        int WorldPos_Y = Mathf.RoundToInt(gameObject.transform.position.z * -1) / 2;
         WorldPos = new Vector2(1+WorldPos_X ,1+WorldPos_Y );
-        Debug.Log("WorldPos"+WorldPos);
-        Debug.Log("WorldPosX"+WorldPos_X);
+        //Debug.Log("WorldPos"+WorldPos);
+        //Debug.Log("WorldPosX"+WorldPos_X);
         
        
     }
