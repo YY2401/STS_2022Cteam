@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Sonaru_Developer.MapEditor;
 using UnityEditor;
 using UnityEngine;
 
@@ -13,10 +14,11 @@ public class MapEditorWindow : EditorWindow
     // public TrapSpawner TS;
     // public Road RD;
     // public Wall WL;
-    
+
+    public AllBlockData BlockData;
     public MapSO TargetMap;
 
-    public List<BlockType> AllBlockType;
+    private Dictionary<int, Dictionary<int, Block>> AllBlock;
     private int ColNum;
     private int RowNum;
     
@@ -30,35 +32,59 @@ public class MapEditorWindow : EditorWindow
 
     private void OnGUI()
     {
-        // CCS = (ColorChangerSpawner) EditorGUILayout.ObjectField("ColorChangeSpawner", CCS, typeof(Block), true);
-        // DES = (DoubleEndSpawner) EditorGUILayout.ObjectField("DoubleEndSpawner", DES, typeof(Block), true);
-        // SES = (SingleEndSpawner) EditorGUILayout.ObjectField("SingleEndSpawner", SES, typeof(Block), true);
-        // TS = (TrapSpawner) EditorGUILayout.ObjectField("TrapSpawner", TS, typeof(Block), true);
-        // RD = (Road) EditorGUILayout.ObjectField("Road", RD, typeof(Block), true);
-        // WL = (Wall) EditorGUILayout.ObjectField("Wall", WL, typeof(Block), true);
-        
+        BlockData = (AllBlockData) EditorGUILayout.ObjectField("AllBlockType", BlockData, typeof(AllBlockData), true);
         TargetMap = (MapSO)EditorGUILayout.ObjectField("Map", TargetMap, typeof(MapSO), true);
         
-        if(TargetMap == null)
+        if(TargetMap == null || BlockData == null)
         {
             Repaint();
             return;
         }
 
-        AllBlockType = new List<BlockType>();
-        
+
+        AllBlock = new Dictionary<int, Dictionary<int, Block>>();
         ColNum = TargetMap.ThisMap.Count;
         RowNum = TargetMap.ThisMap[0].ThisColumn.Count;
 
-        for (var i = TargetMap.ThisMap.Count - 1; i >= 0; i--)
+        for (var i = 0; i < TargetMap.ThisMap.Count; i++)
         {
+            AllBlock.Add(i, new Dictionary<int, Block>());
+            
             GUILayout.BeginHorizontal();
-            foreach (var block in TargetMap.ThisMap[i].ThisColumn)
+            
+            for (var j = 0; j < TargetMap.ThisMap[i].ThisColumn.Count; j++)
             {
+                var block = TargetMap.ThisMap[i].ThisColumn[j];
                 var enumPopup = (BlockType) EditorGUILayout.EnumPopup(block.ThisBlockType);
+                AllBlock[i].Add(j, block);
+
+                switch (enumPopup)
+                {
+                    case BlockType.ColorChangerSpawner:
+                        AllBlock[i][j] = BlockData.CCS;
+                        break;
+                    case BlockType.DoubleEndSpawner:
+                        AllBlock[i][j] = BlockData.DES;
+                        break;
+                    case BlockType.SingleEndSpawner:
+                        AllBlock[i][j] = BlockData.SES;
+                        break;
+                    case BlockType.TrapSpawner:
+                        AllBlock[i][j] = BlockData.TS;
+                        break;
+                    case BlockType.Road:
+                        AllBlock[i][j] = BlockData.RD;
+                        break;
+                    case BlockType.Wall:
+                        AllBlock[i][j] = BlockData.WL;
+                        break;
+                }
+                
+                TargetMap.ThisMap[i].ThisColumn[j] = AllBlock[i][j];
+                EditorUtility.SetDirty(TargetMap);
             }
+            
             GUILayout.EndHorizontal();
         }
-
     }
 }
