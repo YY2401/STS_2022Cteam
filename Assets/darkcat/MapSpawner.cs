@@ -20,8 +20,9 @@ public class MapSpawner : MonoBehaviour
     private List<GameObject> Floors = new List<GameObject>();
     void Start()
     {
-        Addressables.LoadAssetsAsync<GameObject>(m_BlocksLables, null).Completed += OnResourcesRetrived;
-        
+        LoadBlockAssetData();
+
+
     }
 
     // Update is called once per frame
@@ -47,7 +48,11 @@ public class MapSpawner : MonoBehaviour
     public void OnResourcesRetrived(AsyncOperationHandle<IList<GameObject>>obj)
     {
         m_Blocks = obj.Result;
-        MapListToScene();
+        Debug.Log("LoadComplete");
+    }
+    public void LoadBlockAssetData()
+    {
+        Addressables.LoadAssetsAsync<GameObject>(m_BlocksLables, null).Completed += OnResourcesRetrived;
     }
     public void SpawnMap(int Round)
     {
