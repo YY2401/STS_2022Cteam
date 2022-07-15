@@ -7,6 +7,7 @@ using UnityEngine.UI;
 using UnityEngine.Events;
 public class Move : MonoBehaviour {
     public GameObject ThisPlayerOBJ;
+    public GameObject Steper;
     public MapSpawner mapspawn;
     public Material[] ColorMats;
     public bool[] IsPlayer = new bool[4];//前方偵測玩家(順序：前、後、左、右)
@@ -17,6 +18,7 @@ public class Move : MonoBehaviour {
     bool CanMoveHor = true;
     public  Vector2 WorldPos;
     Vector3 StartPos;
+    public bool ThunderTrigger = false;
     public Player ThisPlayer;//這個玩家
     public NowColor ThisColor;
     public bool IsToEnd = false;
@@ -56,10 +58,14 @@ public class Move : MonoBehaviour {
     }
     void Update() {
         ColorUpdate();
+        Steper.transform.position = this.transform.position - new Vector3(0, 1, 0);
         if (isMoving) {
             return;
         }
-
+        if (ThunderTrigger)
+        {
+            return;
+        }
         else if(Controller.LeftDpad.ReadValue().x == 1 && CanMoveVer == true )
         {
             Debug.Log(this.gameObject.name+"LeftBtn");
@@ -147,9 +153,52 @@ public class Move : MonoBehaviour {
     }
     public void OnFireTrigger()
     {
-        
+        GM.ReducePlayTimer(3f);
     }
+    public void OnThunderTrigger(GameObject ThunderParticle)
+    {
+        if (ThisPlayer == Player.Player1)
+        {
+            GM.Player2.ThunderTrigger = true;
+            Instantiate(ThunderParticle, GM.Player2.ThisPlayerOBJ.transform.position, Quaternion.identity);
+            Invoke("Mahi", 2f);
+        }
+        else
+        {
+            GM.Player1.ThunderTrigger = true;
+            Instantiate(ThunderParticle, GM.Player1.ThisPlayerOBJ.transform.position, Quaternion.identity);
+            Invoke("Mahi", 2f);
+        }
+    }
+    public void OnMistTrigger()
+    {
+        Debug.Log(12345);
+        GM.Player1.ThisPlayerOBJ.GetComponent<MeshRenderer>().enabled = false;
+        GM.Player2.ThisPlayerOBJ.GetComponent<MeshRenderer>().enabled = false;
+        GM.Player1.Steper.SetActive(true);
+        GM.Player2.Steper.SetActive(true);
+        Invoke("ShowMesh", 2f);
+    }
+    void ShowMesh()
+    {
 
+        GM.Player1.ThisPlayerOBJ.GetComponent<MeshRenderer>().enabled = true;
+        GM.Player2.ThisPlayerOBJ.GetComponent<MeshRenderer>().enabled = true;
+        GM.Player1.Steper.SetActive(false);
+        GM.Player2.Steper.SetActive(false);
+    }
+    void Mahi()
+    {        
+        ThunderTrigger = false;
+        if (ThisPlayer == Player.Player1)
+        {
+            GM.Player2.ThunderTrigger = false;
+        }
+        else
+        {
+            GM.Player1.ThunderTrigger = false;
+        }
+    }
     void GridPosition()
     {
         int WorldPos_X = Mathf.RoundToInt(gameObject.transform.position.x * -1)/ 2;
