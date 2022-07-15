@@ -12,4 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39f5df823fec55e46905cb925a4ca749, type: 3}
   m_Name: TestMap
   m_EditorClassIdentifier: 
-  ThisMap: []
+  ThisMap:
+  - {fileID: 11400000, guid: 0e5091e1c5587d14aa8048a524108bcd, type: 2}
+  - {fileID: 11400000, guid: 0e5091e1c5587d14aa8048a524108bcd, type: 2}
+  - {fileID: 11400000, guid: 0e5091e1c5587d14aa8048a524108bcd, type: 2}
+  - {fileID: 11400000, guid: 0e5091e1c5587d14aa8048a524108bcd, type: 2}
+  - {fileID: 11400000, guid: 0e5091e1c5587d14aa8048a524108bcd, type: 2}
+  - {fileID: 11400000, guid: 0e5091e1c5587d14aa8048a524108bcd, type: 2}
+  - {fileID: 11400000, guid: 0e5091e1c5587d14aa8048a524108bcd, type: 2}
+  - {fileID: 11400000, guid: 0e5091e1c5587d14aa8048a524108bcd, type: 2}
+  - {fileID: 11400000, guid: 0e5091e1c5587d14aa8048a524108bcd, type: 2}

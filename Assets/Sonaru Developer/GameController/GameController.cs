@@ -10,6 +10,8 @@ using UnityEngine.InputSystem.Controls;
 public class GameController : MonoBehaviour
 {
     public MapSpawner MapControl;
+    public Move Player1;
+    public Move Player2;
     
     private int currentRound;
 

@@ -171,6 +171,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mapspawn: {fileID: 1703335968}
   speed: 300
+  WorldPos: {x: 0, y: 0}
   ThisPlayer: 1
   Controller: {fileID: 0}
 --- !u!1 &99791800
@@ -716,6 +717,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!114 &1013590385 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3014891632949165309, guid: d4182c31c8ab12441b8db2ee76cbb47a, type: 3}
+  m_PrefabInstance: {fileID: 161352803}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95f41d4aa7438bb49a7fb247e93dd823, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1022490079
 GameObject:
   m_ObjectHideFlags: 0
@@ -867,4 +879,53 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1725106169
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1725106171}
+  - component: {fileID: 1725106170}
+  m_Layer: 0
+  m_Name: GameController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1725106170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1725106169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc0165b8b370e9f4296aebc09f07798d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MapControl: {fileID: 1703335968}
+  Player1: {fileID: 1013590385}
+  Player2: {fileID: 24154796}
+  FirstRoundCountDown: 20
+  currentRoundCountDown: 0
+  CurrentState: 0
+--- !u!4 &1725106171
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1725106169}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 6.422283, y: -0.28357315, z: 0.9997177}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
