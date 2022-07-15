@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class TimeBar : MonoBehaviour
 {
     Image m_TimeBar;
-    public float currentTime;
+    public float currentTime;   
     private float maxTime;
     //
 
@@ -15,11 +15,16 @@ public class TimeBar : MonoBehaviour
     void Start()
     {
         m_TimeBar = GetComponent<Image>();
+        currentTime = maxTime;
     }
 
     // Update is called once per frame
     void Update()
     {
-        float time = maxTime - Time.deltaTime;
+        if(currentTime >0)
+        {
+            currentTime -= Time.deltaTime;
+            m_TimeBar.fillAmount = currentTime / maxTime;
+        }
     }
 }
