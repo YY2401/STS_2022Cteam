@@ -8,7 +8,7 @@ public class MainPlayState : IState
     public GameController Controller { get; set; }
     private SimpleTimer gameTimer;
 
-    private TextMesh debugText = null;
+    //private TextMesh debugText = null;
     
     public void OnStateEnter(GameController controller)
     {
@@ -21,13 +21,13 @@ public class MainPlayState : IState
         else gameTimer.Reset(Controller.currentRoundCountDown);
         gameTimer.Pause();
         
-        debugText = DebugTextMesh.CreatWorldText("", Controller.transform, Vector3.zero, 20, Color.red);
+        //debugText = DebugTextMesh.CreatWorldText("", Controller.transform, Vector3.zero, 20, Color.red);
         Controller.DelayDo(StartStageSetting, 1);
     }
 
     public void OnStateStay()
     {
-        if(debugText) debugText.text = gameTimer.Remain.ToString();
+        //if(debugText) debugText.text = gameTimer.Remain.ToString();
         
         if(gameTimer.IsFinish) Controller.ChangeState(StateEnum.MainPlay);
     }
@@ -35,7 +35,7 @@ public class MainPlayState : IState
     public void OnStateExit()
     {
         Controller.MapControl.DestroyMap();
-        Object.Destroy(debugText.gameObject);
+        //Object.Destroy(debugText.gameObject);
     }
 
 
