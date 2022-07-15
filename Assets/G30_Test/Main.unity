@@ -128,19 +128,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3508171191214039287, guid: fe546b199e06b6f488b54c74920be8a4, type: 3}
   m_PrefabInstance: {fileID: 1619558623}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &24154794
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 24154793}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2, y: 2, z: 2}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &24154795
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -804,6 +791,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2721561054669763871, guid: fe546b199e06b6f488b54c74920be8a4, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3147870369570734370, guid: fe546b199e06b6f488b54c74920be8a4, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 

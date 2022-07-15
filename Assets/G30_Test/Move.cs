@@ -106,7 +106,17 @@ public class Move : MonoBehaviour {
         
     }
 
-
+    public void ChangeColor()
+    {
+        if (ThisColor == NowColor.Red)
+        {
+            ThisColor = NowColor.Blue;
+        }
+        else
+        {
+            ThisColor = NowColor.Red;
+        }
+    }
     void GridPosition()
     {
         int WorldPos_X = Mathf.RoundToInt(gameObject.transform.position.x * -1)/ 2;
