@@ -8,6 +8,8 @@ public class Move : MonoBehaviour {
     public GameObject ThisPlayerOBJ;
     public MapSpawner mapspawn;
     public Material[] ColorMats;
+    public bool[] IsPlayer = new bool[4];//前方偵測玩家(順序：前、後、左、右)
+    public Text[] Prop_Name = new Text[4];
     public int speed = 300;
     bool isMoving = false;
     bool CanMoveVer = true;
@@ -46,7 +48,7 @@ public class Move : MonoBehaviour {
             return;
         }
 
-        else if(Controller.LeftDpad.ReadValue().x == 1 && CanMoveVer == true)
+        else if(Controller.LeftDpad.ReadValue().x == 1 && CanMoveVer == true && IsPlayer[2] == false)
         {
             Debug.Log(this.gameObject.name+"LeftBtn");
             //Debug.Log(WorldPos+new Vector2(1,0));
@@ -54,10 +56,9 @@ public class Move : MonoBehaviour {
             {
             return;
             }
-            CanMoveVer = false;   
-            Debug.Log(222);
+            CanMoveVer = false;
             StartCoroutine(Roll(Vector3.left));
-        }else if(Controller.LeftDpad.ReadValue().y == -1 && CanMoveHor == true)
+        }else if(Controller.LeftDpad.ReadValue().y == -1 && CanMoveHor == true&& IsPlayer[0] == false)
         {
             Debug.Log(this.gameObject.name+"UpBtn");
             //Debug.Log(WorldPos+new Vector2(0,-1));
@@ -68,7 +69,7 @@ public class Move : MonoBehaviour {
             CanMoveHor = false;
             StartCoroutine(Roll(Vector3.forward));
         }
-        else if(Controller.LeftDpad.ReadValue().x == -1 && CanMoveVer == true)
+        else if(Controller.LeftDpad.ReadValue().x == -1 && CanMoveVer == true && IsPlayer[3] == false)
         {
             Debug.Log(this.gameObject.name+"RightBtn");
            //Debug.Log(WorldPos+new Vector2(-1,0));
@@ -79,7 +80,7 @@ public class Move : MonoBehaviour {
             CanMoveVer = false;
              StartCoroutine(Roll(Vector3.right));
         }
-        else if(Controller.LeftDpad.ReadValue().y == 1 && CanMoveHor == true)
+        else if(Controller.LeftDpad.ReadValue().y == 1 && CanMoveHor == true&& IsPlayer[1] == false)
         {
             Debug.Log(this.gameObject.name+"DownBtn");
             //Debug.Log(WorldPos+new Vector2(0,1));
@@ -105,7 +106,6 @@ public class Move : MonoBehaviour {
     {
         
     }
-
     public void ChangeColor()
     {
         if (ThisColor == NowColor.Red)
@@ -117,6 +117,26 @@ public class Move : MonoBehaviour {
             ThisColor = NowColor.Red;
         }
     }
+    void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.name == Prop_Name[0].text)//火機關觸發
+        {
+
+        }
+        else if(other.gameObject.name == Prop_Name[1].text)//雷機關
+        {
+            
+        }
+        else if(other.gameObject.name == Prop_Name[2].text)//霧機關
+        {
+            
+        }
+        if(other.gameObject.name == Prop_Name[3].text)//終點..
+        {
+            
+        }
+    }
+
     void GridPosition()
     {
         int WorldPos_X = Mathf.RoundToInt(gameObject.transform.position.x * -1)/ 2;
@@ -127,6 +147,8 @@ public class Move : MonoBehaviour {
         
        
     }
+
+    
     
     IEnumerator Roll(Vector3 direction) {
         isMoving = true;
