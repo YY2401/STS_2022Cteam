@@ -5,22 +5,31 @@ using UnityEngine.InputSystem.Controls;
 using System.Linq;
 using UnityEngine.UI;
 public class Move : MonoBehaviour { 
+    public MapSpawner mapspawn;
     public int speed = 300;
     bool isMoving = false;
-    bool CanMove = true;
+    bool CanMoveVer = true;
+    bool CanMoveHor = true;
     public static Vector2 WorldPos;
     Vector3 StartPos;
+    public Player ThisPlayer;//這個玩家
+    public GamePadRes Controller;
 
-    public Collider[]CurrentCubes;
-    Collider[] cubesinsideZone;
-    public Text[] ObjectLIstInZone;
-    Collider[] cubesOutsideZone;
 
     void Start()
     {
-        
+    
         StartPos = new Vector2(transform.position.x,transform.position.z);
-        WorldPos = new Vector2(0,0);
+        
+        switch(ThisPlayer)
+        {
+            case Player.Player1:
+            Controller = GameObject.Find("Player1GamePad").GetComponent<GamePadRes>();
+            break;
+            case Player.Player2:
+            Controller = GameObject.Find("Player2GamePad").GetComponent<GamePadRes>();
+            break;
+        }
 
     }
 
@@ -29,32 +38,53 @@ public class Move : MonoBehaviour {
             return;
         }
 
-        else if(Gamepad.current.dpad.x.ReadValue() == 1 && Gamepad.current.dpad.IsPressed() && CanMove == true)
+        else if(Controller._gamepad.dpad.x.ReadValue() == 1 && Gamepad.current.dpad.IsPressed() && CanMoveVer == true)
         {
             Debug.Log("LeftBtn");
-            CanMove = false;   
+            if(mapspawn.GetType(WorldPos+new Vector2(1,0))==BlockType.Wall)
+            {
+            return;
+            }
+            CanMoveVer = false;   
+            Debug.Log(222);
             StartCoroutine(Roll(Vector3.left));
-        }else if(Gamepad.current.dpad.y.ReadValue() == -1 && Gamepad.current.dpad.IsPressed())
+        }else if(Controller._gamepad.dpad.y.ReadValue() == -1 && Gamepad.current.dpad.IsPressed()&& CanMoveHor == true)
         {
             Debug.Log("UpBtn");
-            CanMove = false;
+            if(mapspawn.GetType(WorldPos+new Vector2(0,-1))==BlockType.Wall)
+            {
+            return;
+            }
+            CanMoveHor = false;
             StartCoroutine(Roll(Vector3.forward));
         }
-        else if(Gamepad.current.dpad.x.ReadValue() == -1 && Gamepad.current.dpad.IsPressed())
+        else if(Controller._gamepad.dpad.x.ReadValue() == -1 && Gamepad.current.dpad.IsPressed()&& CanMoveVer == true)
         {
             Debug.Log("RightBtn");
-            CanMove = false;
+            if(mapspawn.GetType(WorldPos+new Vector2(-1,0))==BlockType.Wall)
+            {
+            return;
+            }
+            CanMoveVer = false;
              StartCoroutine(Roll(Vector3.right));
         }
-        else if(Gamepad.current.dpad.y.ReadValue() == 1 && Gamepad.current.dpad.IsPressed())
+        else if(Controller._gamepad.dpad.y.ReadValue() == 1 && Gamepad.current.dpad.IsPressed()&& CanMoveHor == true)
         {
             Debug.Log("DownBtn");
-            CanMove = false;
+            if(mapspawn.GetType(WorldPos+new Vector2(0,1))==BlockType.Wall)
+            {
+            return;
+            }
+            CanMoveHor = false;
             StartCoroutine(Roll(Vector3.back));
         }
-        else
+        if(Gamepad.current.dpad.x.ReadValue()<=0.95&&Gamepad.current.dpad.x.ReadValue()>=-0.95&&CanMoveVer == false)
         {
-            CanMove = true;
+            CanMoveVer = true;
+        }
+        if(Gamepad.current.dpad.y.ReadValue()<=0.95&&Gamepad.current.dpad.y.ReadValue()>=-0.95&&CanMoveHor == false)
+        {
+            CanMoveHor = true;
         }
         GridPosition();
     }
@@ -67,17 +97,17 @@ public class Move : MonoBehaviour {
 
     void GridPosition()
     {
-        int WorldPos_X = Mathf.Abs(Mathf.FloorToInt(gameObject.transform.position.x - StartPos.x)) ;
-        int WorldPos_Y = Mathf.Abs(Mathf.FloorToInt(gameObject.transform.position.z - StartPos.y)) ;
-        WorldPos = new Vector2(WorldPos_X / 2,WorldPos_Y / 2);
+        int WorldPos_X = Mathf.RoundToInt(gameObject.transform.position.x * -1- StartPos.x)/ 2;
+        int WorldPos_Y = Mathf.Abs(Mathf.FloorToInt(gameObject.transform.position.z - StartPos.y)) / 2;
+        WorldPos = new Vector2(1+WorldPos_X ,1+WorldPos_Y );
         Debug.Log("WorldPos"+WorldPos);
+        Debug.Log("WorldPosX"+WorldPos_X);
         
        
     }
     
     IEnumerator Roll(Vector3 direction) {
         isMoving = true;
-
         float remainingAngle = 90;
         Vector3 rotationCenter = transform.position + direction  + Vector3.down ;
         Vector3 rotationAxis = Vector3.Cross(Vector3.up, direction);
@@ -92,4 +122,10 @@ public class Move : MonoBehaviour {
         isMoving = false;
     }
 
+}
+[System.Serializable]
+public enum Player
+{
+Player1,
+Player2,
 }
