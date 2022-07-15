@@ -23,6 +23,9 @@ public class MainPlayState : IState
         
         //debugText = DebugTextMesh.CreatWorldText("", Controller.transform, Vector3.zero, 20, Color.red);
         Controller.DelayDo(StartStageSetting, 1);
+        
+        //Register Action
+        Controller.OnFireTrigger += reduceTime;
     }
 
     public void OnStateStay()
@@ -35,6 +38,7 @@ public class MainPlayState : IState
 
     public void OnStateExit()
     {
+        Controller.OnFireTrigger -= reduceTime;
         Controller.MapControl.DestroyMap();
         Controller.Player1.IsToEnd = false;
         Controller.Player2.IsToEnd = false;
@@ -50,4 +54,9 @@ public class MainPlayState : IState
     }
 
     private bool AllPlayerArriveFinish() =>  Controller.Player1.IsToEnd && Controller.Player2.IsToEnd;
+
+    private void reduceTime(float time)
+    {
+        gameTimer.Reset(Mathf.Max(gameTimer.Remain - time, 0));
+    }
 }
