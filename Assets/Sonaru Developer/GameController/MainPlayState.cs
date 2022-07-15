@@ -15,7 +15,13 @@ public class MainPlayState : IState
         Controller = controller;
         
         Controller.CurrentRound++;
+        //set timer
+        // Set timer
+        if (gameTimer == null) gameTimer = new SimpleTimer(Controller.currentRoundCountDown);
+        else gameTimer.Reset(Controller.currentRoundCountDown);
+        gameTimer.Pause();
         
+        debugText = DebugTextMesh.CreatWorldText("", Controller.transform, Vector3.zero, 20, Color.red);
         Controller.DelayDo(StartStageSetting, 1);
     }
 
@@ -28,16 +34,15 @@ public class MainPlayState : IState
 
     public void OnStateExit()
     {
+        Controller.MapControl.DestroyMap();
         Object.Destroy(debugText.gameObject);
     }
 
 
     private void StartStageSetting()
     {
-        // Set timer
-        if (gameTimer == null) gameTimer = new SimpleTimer(Controller.currentRoundCountDown);
-        else gameTimer.Reset(Controller.currentRoundCountDown);
-        
-        debugText = DebugTextMesh.CreatWorldText(gameTimer.Remain.ToString(), Controller.transform, Vector3.zero, 20, Color.red);
+        Controller.MapControl.SpawnMap(Controller.CurrentRound);
+        Controller.MapControl.MapListToScene();
+        gameTimer.Resume();
     }
 }

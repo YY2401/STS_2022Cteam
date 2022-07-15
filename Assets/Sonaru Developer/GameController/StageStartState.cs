@@ -1,4 +1,7 @@
 ﻿
+using UnityEngine;
+using UnityEngine.AddressableAssets;
+
 public class StageStartState : IState
 {
     public GameController Controller { get; set; }
@@ -6,8 +9,10 @@ public class StageStartState : IState
     public void OnStateEnter(GameController controller)
     {
         Controller = controller;
-
-        Controller.DelayDo(()=>Controller.ChangeState(StateEnum.MainPlay), 1);
+        
+        Controller.MapControl.LoadBlockAssetData();
+        
+        Controller.DelayDo(()=>Controller.ChangeState(StateEnum.MainPlay), 3);
     }
 
     public void OnStateStay()

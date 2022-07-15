@@ -9,6 +9,8 @@ using UnityEngine.InputSystem.Controls;
 
 public class GameController : MonoBehaviour
 {
+    public MapSpawner MapControl;
+    
     private int currentRound;
 
     public int CurrentRound
