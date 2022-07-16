@@ -7,7 +7,8 @@ public class MainPlayState : IState
 {
     public GameController Controller { get; set; }
     private SimpleTimer gameTimer;
-
+    private bool roundClear;
+    
     //private TextMesh debugText = null;
     
     public void OnStateEnter(GameController controller)
@@ -15,8 +16,9 @@ public class MainPlayState : IState
         Controller = controller;
         
         Controller.CurrentRound++;
+        roundClear = false;
+        
         //set timer
-        // Set timer
         if (gameTimer == null) gameTimer = new SimpleTimer(Controller.currentRoundCountDown);
         else gameTimer.Reset(Controller.currentRoundCountDown);
         gameTimer.Pause();
@@ -31,10 +33,20 @@ public class MainPlayState : IState
     public void OnStateStay()
     {
         TimeBar.instance.currentTime =(gameTimer.Remain01);
-        // if Time over -> game over scene
-        if(gameTimer.IsFinish) Controller.ChangeState(StateEnum.GameOver);
-        // else if Player1 & Player2 arrive finish point -> main play scene
-        if(AllPlayerArriveFinish()) Controller.ChangeState(StateEnum.MainPlay);
+        // if Player1 & Player2 arrive finish point -> main play scene
+        if (AllPlayerArriveFinish() && !roundClear)
+        {
+            roundClear = true;
+            gameTimer.Pause();
+            // Wait for players move over
+            Controller.DelayDo(()=> Controller.ChangeState(StateEnum.MainPlay), 0.3f);
+        }
+        // else if Time over -> game over scene
+        else if (gameTimer.IsFinish && !roundClear)
+        {
+            Controller.ChangeState(StateEnum.GameOver);
+        }
+        
     }
 
     public void OnStateExit()
