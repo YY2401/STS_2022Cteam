@@ -16,7 +16,11 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: 47b51445a2dce164d8db990bde19df18
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 5d765cf133e266c479686ba4f2c779de
+    m_Address: Assets/G30_Test/Shield_01.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: f129e8a5b2517ca41b0b479246bf6abd, type: 2}
   m_SchemaSet:
