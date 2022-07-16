@@ -17,7 +17,7 @@ public class MainGameAnimationController : MonoBehaviour
         if (GM.CurrentRound == 11&&IsShaking)
         {
             Cam.enabled = false;
-            InvokeRepeating("CamShakeUpdate", 1, 1);
+            InvokeRepeating("CamShakeUpdate", 1, 1.2f);
             IsShaking = false;
         }
         if (GM.CurrentRound>10)

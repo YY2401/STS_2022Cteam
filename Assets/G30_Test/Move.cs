@@ -214,6 +214,7 @@ public class Move : MonoBehaviour {
     
     IEnumerator Roll(Vector3 direction) {
         isMoving = true;
+        SEManager.instance.OnMove();
         float remainingAngle = 90;
         Vector3 rotationCenter = transform.position + direction  + Vector3.down ;
         Vector3 rotationAxis = Vector3.Cross(Vector3.up, direction);
