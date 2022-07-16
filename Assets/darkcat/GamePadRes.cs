@@ -41,7 +41,8 @@ public class GamePadRes : MonoBehaviour
                         isChecked = true;
                         PlayerManager.playerList.Add(g, this);
                         LeftDpad = _gamepad.dpad;
-                        //TwoControllerRegistry.instance.P12.enabled = true;
+                        TwoControllerRegistry.instance.P1.GetComponent<Animator>().enabled = true;
+                        TwoControllerRegistry.instance.P1Pat.SetActive(true);
                         Debug.Log(g.name + ": " + check.ToString());
                         //AudioController.Instance.SpawnSFX(SFXType.CirclePair);
                         return;
@@ -55,7 +56,8 @@ public class GamePadRes : MonoBehaviour
                         isChecked = true;
                         PlayerManager.playerList.Add(g, this);
                         LeftDpad = _gamepad.dpad;
-                        //TwoControllerRegistry.instance.P34.enabled = true;
+                        TwoControllerRegistry.instance.P2.GetComponent<Animator>().enabled = true;
+                        TwoControllerRegistry.instance.P2Pat.SetActive(true);
                         Debug.Log(g.name + ": " + check.ToString());
                         //AudioController.Instance.SpawnSFX(SFXType.CrossPair);
                         return;
