@@ -41,8 +41,8 @@ public class TwoControllerRegistry : MonoBehaviour
                 {
                     Debug.Log("next scene");
                     Camera.enabled = true;
-                    P1.transform.DOMoveY(45, 2f);
-                    P2.transform.DOMoveY(45, 2f);
+                    P1.transform.DOMoveY(75, 1.5f);
+                    P2.transform.DOMoveY(75, 1.5f);
                     
                 }
             }
