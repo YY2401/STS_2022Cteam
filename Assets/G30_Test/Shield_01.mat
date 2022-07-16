@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Shield_01
+  m_Shader: {fileID: -6465566751694194690, guid: 38ad22a046bbc6245b427cf002bc1ce5, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 2
+  m_EnableInstancingVariants: 1
+  m_DoubleSidedGI: 1
+  m_CustomRenderQueue: 3000
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_8d0a2486a72f43dfb49efdc43f8dd5ff:
+        m_Texture: {fileID: 2800000, guid: e1e6e0e4159c368499ab9b0bd39cca5d, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: e1e6e0e4159c368499ab9b0bd39cca5d, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_32e1fa8aa7324979814c8ba570b0850f: 2
+    - _ForesnelPower: 2
+    m_Colors:
+    - Color_0548f2410b554bba8a249685ec6392b3: {r: 0, g: 0, b: 0, a: 0}
+    - Vector3_28692b96d1d04dc8927597420dd5948b: {r: 0, g: 0, b: 0, a: 0}
+    - _BackColor: {r: 191.74902, g: 25.09804, b: 25.09804, a: 0.35686275}
+    - _ForesnelColor: {r: 1, g: 1, b: 1, a: 0}
+    - _FrontColor: {r: 6.4222345, g: 4.0012875, b: 0.10087279, a: 1}
+    - _VertexAmount: {r: 0.1, g: 0.1, b: 0.1, a: 0}
+  m_BuildTextureStacks: []
