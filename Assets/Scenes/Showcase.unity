@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 16249956}
-  m_IndirectSpecularColor: {r: 0.032433983, g: 0.032420695, b: 0.041772403, a: 1}
+  m_IndirectSpecularColor: {r: 0.032433983, g: 0.03242069, b: 0.041772403, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -20306,6 +20306,42 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1710845657157425004, guid: c92d176cef5604b43b393896b85da572, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 8.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 1710845658197241946, guid: c92d176cef5604b43b393896b85da572, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 1710845658298808190, guid: c92d176cef5604b43b393896b85da572, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 6.78
+      objectReference: {fileID: 0}
+    - target: {fileID: 1710845658495810412, guid: c92d176cef5604b43b393896b85da572, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 7.39
+      objectReference: {fileID: 0}
+    - target: {fileID: 1710845658770886847, guid: c92d176cef5604b43b393896b85da572, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 1710845658777303394, guid: c92d176cef5604b43b393896b85da572, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 7.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 1710845658805166936, guid: c92d176cef5604b43b393896b85da572, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 8.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 1710845658946808281, guid: c92d176cef5604b43b393896b85da572, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 1710845658967004142, guid: c92d176cef5604b43b393896b85da572, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 8.36
+      objectReference: {fileID: 0}
     - target: {fileID: 4959192362211128977, guid: c92d176cef5604b43b393896b85da572, type: 3}
       propertyPath: m_RootOrder
       value: 2
