@@ -30,7 +30,7 @@ public class MainPlayState : IState
 
     public void OnStateStay()
     {
-        Debug.Log(gameTimer.Remain);
+        TimeBar.instance.currentTime =(gameTimer.Remain01);
         // if Time over -> game over scene
         if(gameTimer.IsFinish) Controller.ChangeState(StateEnum.GameOver);
         // else if Player1 & Player2 arrive finish point -> main play scene
@@ -51,6 +51,8 @@ public class MainPlayState : IState
     {
         Controller.MapControl.SpawnMap(Controller.CurrentRound);
         Controller.MapControl.MapListToScene();
+        Controller.Player1.GetComponent<Animator>().enabled = false;
+        Controller.Player2.GetComponent<Animator>().enabled = false;
         gameTimer.Resume();
     }
 
@@ -58,6 +60,6 @@ public class MainPlayState : IState
 
     private void reduceTime(float time)
     {
-        gameTimer.Reset(Mathf.Max(gameTimer.Remain - time, 0));
+        gameTimer.Reduce(time);
     }
 }

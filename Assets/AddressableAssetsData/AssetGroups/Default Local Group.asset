@@ -17,10 +17,66 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 47b51445a2dce164d8db990bde19df18
   m_SerializeEntries:
-  - m_GUID: 5d765cf133e266c479686ba4f2c779de
-    m_Address: Assets/G30_Test/Shield_01.mat
+  - m_GUID: 09655e13e2fb18f498815a7c075e0808
+    m_Address: FireTrap
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - Blocks
+  - m_GUID: c57b252a5b76ef04dbb204ef546cd4cf
+    m_Address: TestFloor
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Blocks
+  - m_GUID: d17d21d787334734eb629a1fcddb4844
+    m_Address: LightingTrap
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Blocks
+  - m_GUID: c7522b7408b79f643863b260dd30b3a8
+    m_Address: Floor0
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Blocks
+  - m_GUID: 4423f1885b3eaca4a82fd29e07695caa
+    m_Address: Floor1
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Blocks
+  - m_GUID: 21ef922a6b6a5ba4ab5b94b9066c34fd
+    m_Address: Floor2
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Blocks
+  - m_GUID: 88b5f03e6a1f1ee49be31753f40c4b0b
+    m_Address: EndPoint_BlueSquare
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Blocks
+  - m_GUID: 229bdf7e5d30d2e42adaed30b3477d3a
+    m_Address: EndPoint_BlueHolo
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Blocks
+  - m_GUID: e3f93fbb47c0494428971cd85c5aaf88
+    m_Address: EndPoint_RedHolo
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Blocks
+  - m_GUID: b873ff4c36408dc4c9f7a0a020488127
+    m_Address: EndPoint_RedSquare
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Blocks
+  - m_GUID: c6d898818f8170a469a5e97d9e140270
+    m_Address: MistTrap
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Blocks
+  - m_GUID: 9aab4392cbe869e47aa8f861b46145a1
+    m_Address: ColorChanger
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Blocks
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: f129e8a5b2517ca41b0b479246bf6abd, type: 2}
   m_SchemaSet:

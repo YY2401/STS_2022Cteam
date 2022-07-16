@@ -8,6 +8,7 @@ public class FireTrapTrigger : MonoBehaviour
     {
         if (Player.gameObject.name == "Character_1_mod" || Player.gameObject.name == "Character_2_mod")
         {
+            SEManager.instance.OnFire();
             Player.GetComponent<Move>().OnFireTrigger();
         }
     }

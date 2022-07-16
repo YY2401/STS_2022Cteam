@@ -9,6 +9,7 @@ public class OnTriggerThunder : MonoBehaviour
     {
         if (Player.gameObject.name == "Character_1_mod" || Player.gameObject.name == "Character_2_mod")
         {
+            SEManager.instance.OnLighting();
             Player.GetComponent<Move>().OnThunderTrigger(ThunderParticle);            
         }
     }

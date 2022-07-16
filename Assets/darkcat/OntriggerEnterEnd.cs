@@ -6,6 +6,13 @@ public class OntriggerEnterEnd : MonoBehaviour
 {
     public NowColor EndColor;
     public Player EndPlayer;
+    private void OnTriggerEnter(Collider Player)
+    {
+        if (Player.gameObject.name == "Character_1_mod" || Player.gameObject.name == "Character_2_mod")
+        {
+            SEManager.instance.OnColor();
+        }
+    }
     private void OnTriggerStay(Collider Player)
     {
         if (Player.gameObject.name == "Character_1_mod"|| Player.gameObject.name == "Character_2_mod")
