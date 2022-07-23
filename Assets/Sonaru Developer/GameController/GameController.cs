@@ -6,9 +6,13 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
+    public GameObject EndObject;
+    public Text EndLevel;
+
     public MapSpawner MapControl;
     public Move Player1;
     public Move Player2;
