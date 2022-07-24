@@ -16,6 +16,9 @@ public class TwoControllerRegistry : MonoBehaviour
     public GameObject P1Pat;
     public GameObject P2Pat;
     public Animator Camera;
+    public GameObject ChooseSE;
+    public Animator ChooseCanvas;
+    public GameObject IntoGameSE;
     private void Awake()
     {
         instance = this;
@@ -30,7 +33,7 @@ public class TwoControllerRegistry : MonoBehaviour
     {
         if (Player1.isChecked && Player2.isChecked)
         {
-            
+            ChooseCanvas.enabled = true;
         }
         //production
         foreach (Gamepad g in Gamepad.all)
@@ -43,6 +46,7 @@ public class TwoControllerRegistry : MonoBehaviour
                     Camera.enabled = true;
                     P1.transform.DOMoveY(75, 1.5f);
                     P2.transform.DOMoveY(75, 1.5f);
+                    Instantiate(IntoGameSE);
                     
                 }
             }

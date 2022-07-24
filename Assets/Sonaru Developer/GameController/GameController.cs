@@ -70,7 +70,7 @@ public class GameController : MonoBehaviour
         OnFireTrigger?.Invoke(time);         
     }
 
-    private void calcRoundTime(int round) => currentRoundCountDown = Mathf.Max(FirstRoundCountDown - round + 1, 5);
+    private void calcRoundTime(int round) => currentRoundCountDown = Mathf.Max(FirstRoundCountDown - round + 1, 6.5f);
 
 
     #region Delay Do Something Function
